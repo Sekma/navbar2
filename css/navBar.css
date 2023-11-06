@@ -19,6 +19,7 @@ body {
     align-items: center;
     height: 50px;
     padding: 0 10px;
+    background-color: white;
   }
   .ligne1-left h2{
       font-family: Verdana;
@@ -26,10 +27,15 @@ body {
       text-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
   }
   .ligne1-right h5{
-    background-color: rgba(60, 60, 165, 0.1);
+    display: none;
+  }
+  .ligne1-right h4{
+    font-family: Verdana;
+    color: rgb(201, 14, 14);
   }
   /* style ligne 2 */
   nav{
+      background-color: white;
       position: fixed;
       z-index: 1;
       display: flex;
@@ -45,8 +51,8 @@ body {
   }
 
   nav .logo{
-      height: 49px;
-      margin-left: 50px;
+      height: 55px;
+      margin-left: 110px;
       margin-top: 2px;
       transition: margin 0.5s;
   }
@@ -69,16 +75,19 @@ body {
       color: rgb(201, 14, 14);
       transition: all 0.5s;
   }
-  .navBar-right{
+  .navBar-right, .ligne1-right{
     padding: 8px;
     width: 30%;
     text-align: center;
   }
-  .navBar-right h5 a{
+  .navBar-right h5 a, .ligne1-right h5 a{
     text-decoration: none;
     font-family: 'lato';
     color: rgb(0, 0, 0);
-    padding: 15px 50px;
+    padding: 15px;
+  }
+  .navBar-right h5 a span, .ligne1-right h5 a span{
+    margin-left: 5px;
   }
   /* toggleMenu */
   .burger-toggle{
@@ -127,12 +136,77 @@ body {
       height: 50px;
     }
   }
-  /* END of Style NavBar */
+
+  /* burger toggle */
+  
+  nav.active{
+    height: 150px;
+  }
+  nav.active .logo{
+    margin-top: 97px;
+    margin-left: 5px;
+  }
+  nav.active .navBar-right{
+    margin-top: 97px;
+  }
+  nav.active ul{
+    display: flex;
+    flex-direction: column;
+}
+nav.active ul li{
+    padding: 5px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+}
+nav.active ul li:nth-child(4){
+  border: none;
+  margin-bottom: 5px;
+}
+  .burger-toggle.burger-toggle.active{
+      width: 30px;
+  }
+
+  .burger-toggle.active .line:nth-child(1) {
+    transform: translateY(8px) rotate(-45deg);
+    background-color: rgb(201, 14, 14);
+    transition: all 0.5s;
+    }
+    
+    .burger-toggle.active .line:nth-child(2) {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .burger-toggle.active .line:nth-child(3) {
+      transform: translateY(-8px) rotate(45deg);
+      background-color: rgb(201, 14, 14);
+      transition: all 0.5s;
+    }
+    
+    nav.active div.burger-toggle{
+      display: flex;
+      width: 10%;
+    }
+    /* tablet version */
   @media (max-width: 992px){
       /* navbar */
-      nav ul{
-          width: 100%;
-      }
+      .navBar-left ul{
+        display: none;
+    }
+  .navBar-left{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 15px;
+    width: 100%;
+  }
+  .navBar-right{
+    width: 50%;
+    margin: 0;
+    transition: margin 0.5s;
+  }
+  .burger-toggle{
+    display: block;
+    margin-top: 10px;
+}
   }
   @media (max-width: 767px){
       /* navbar */
@@ -140,64 +214,20 @@ body {
         gap: 0;
         margin: 5px;
       }
-     
-      nav ul{
-          display: none;
+      .ligne1-right{
+        width: 50%;
+        font-size: 10px;
       }
-      nav ul a{
-          height: 30px;
+      .ligne1-right h5{
+        display: block;
       }
-      nav ul li:nth-child(4){
+      .ligne1-right h4{
         display: none;
-       }
-      nav.active{
-        height: 110px;
-        align-items: center;
-        justify-content: space-between;
       }
-      nav.active .logo{
-        margin-top: 64px;
-        margin-left: 5px;
+      .navBar-right{
+        display: none;
       }
-      nav.active ul{
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-    nav.active ul a{
-        width: 140px;
-        box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.5);
-    }
-      .burger-toggle{
-          display: block;
-          position: absolute;
-          top: 15px;
-          right: 20px;
-      }
-      .burger-toggle.burger-toggle.active{
-          width: 30px;
-      }
-    
-      .burger-toggle.active .line:nth-child(1) {
-        transform: translateY(8px) rotate(-45deg);
-        background-color: rgb(201, 14, 14);
-        transition: all 0.5s;
-        }
-        
-        .burger-toggle.active .line:nth-child(2) {
-          opacity: 0;
-          transition: opacity 0.5s;
-        }
-        
-        .burger-toggle.active .line:nth-child(3) {
-          transform: translateY(-8px) rotate(45deg);
-          background-color: rgb(201, 14, 14);
-          transition: all 0.5s;
-        }
-        
-        nav.active div.burger-toggle{
-          display: flex;
-          width: 10%;
-        }
+      
+
       
   }
